@@ -3,12 +3,17 @@
 #Module: Programming and Scripting
 #Lecturer: Andrew Beatty
 #Pandsproject: Fisher’s Iris data set - research, documentation, code, analysis
+#http://www.learningaboutelectronics.com/Articles/How-to-create-a-pairplot-Python-seaborn.php
+#https://www.geeksforgeeks.org/box-plot-and-histogram-exploration-on-iris-data/
 
 
 #Firstly import pandas to allow for data analysis, manipulation
 import pandas as pd
 #Use Pyplot, a submodule of the Matplotlib library to visualize the diagram/use for visual data/plots etc 
 import matplotlib.pyplot as plt
+
+import numpy as np
+import seaborn as sns
 #read iris.data file into a DataFrame, allowed through use of pandas imported
 df = pd.read_csv('iris.data', delimiter=',')
 
@@ -60,6 +65,46 @@ with open('iris_summary.txt', 'w') as f:
 #Create a variable for the the dataset, ensure to include columns
 iris = pd.read_csv('iris.data', delimiter=',', names=col_names)
 
+#Histograms for each attribute
+
+plt.figure(figsize = (10, 7))
+x = iris["sepal_length"]
+  
+plt.hist(x, bins = 20, color = "purple")
+plt.title("Sepal Length in cm")
+plt.xlabel("Sepal_Length_cm")
+plt.ylabel("Count")
+
+
+plt.figure(figsize = (10, 7))
+x = iris.sepal_width
+  
+plt.hist(x, bins = 20, color = "purple")
+plt.title("Sepal Width in cm")
+plt.xlabel("Sepal_Width_cm")
+plt.ylabel("Count")
+  
+
+plt.figure(figsize = (10, 7))
+x = iris.petal_length
+  
+plt.hist(x, bins = 20, color = "purple")
+plt.title("Petal Length in cm")
+plt.xlabel("Petal_Length_cm")
+plt.ylabel("Count")
+  
+
+plt.figure(figsize = (10, 7))
+x = iris.petal_width
+  
+plt.hist(x, bins = 20, color = "purple")
+plt.title("Petal Width in cm")
+plt.xlabel("Petal_Width_cm")
+plt.ylabel("Count")
+  
+#plt.show()
+
+
 #Create subplots to create histogram of all variables together - can do seperate also - 
 fig, axs = plt.subplots(2, 2, figsize=(10, 10))
 
@@ -74,4 +119,11 @@ axs[1, 1].hist(iris['petal_width'], bins=10)
 axs[1, 1].set_title('Petal Width')
 
 # Display the subplots
+#plt.show()
+
+#Create a pairplot - using seaborn and matplotlib module - this is a useful in visualising the 3 species in pairs and see how they pair up together
+
+sns.pairplot(iris, hue='species')
+
 plt.show()
+
