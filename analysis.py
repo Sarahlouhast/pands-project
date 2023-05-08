@@ -125,5 +125,5 @@ axs[1, 1].set_title('Petal Width')
 
 sns.pairplot(iris, hue='species')
 
-plt.show()
+#plt.show()
 
