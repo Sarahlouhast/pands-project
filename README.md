@@ -8,7 +8,6 @@ The details of the project is saved to the following location [pandsproject](htt
 Below is a detailed report on the Iris data set, including research, documentation, code, analysis and what the program will do once executed.
 
 ## Background
-________________________________________
 Firstly, to start off with some background to the Iris flower, its dataset, what is it and why is it so popular. 
 Iris is a flowering plant, researchers have measured various features of the different iris flowers and recorded digitally.  The iris dataset is a collection of 150 samples of iris flowers, each flower has 4 attributes/features – the sepal length, sepal width, petal length and petal width, all features are in centimetres. Based on the features the species of the flower can be determined, as either Iris setosa, Iris versicolor or Iris virginica. The dataset contains 50 samples of each species. The goal of the iris dataset is to be able to determine or predict the flower species based on its features.  
 The Fisher’s paper on the Iris dataset was published by Ronald Fisher in 1936 and became one of the most widely used dataset in data science, used for exploratory data analysis, machine learning, and data visualization and much more. The analysis of the iris dataset is great in many ways, it is a small dataset and easy to work with in this sense but still provides enough data to produce meaningful results. There is lots of data out there and easy to get lost in it all, one major positive is with python for example there is an endless amount of libraries and tools that we can be used to help analyse and visualise the data. This analysis leads to a world outside of the standard excel analysis and is the hello world in data science.
@@ -16,16 +15,16 @@ Some interesting facts to note along with the Fisher’s paper in 1936, at the s
 
 ## The program and its code 
 [analysis.py](https://github.com/Sarahlouhast/pands-project/blob/main/analysis.py)
-________________________________________
 Firstly, to work with the dataset I will need to import libraries, I choose to use the below libraries for this project. 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score,confusion_matrix
-from pandas.plotting import andrews_curves
+###### import pandas as pd
+###### import numpy as np
+###### import matplotlib.pyplot as plt
+###### import seaborn as sns
+###### from sklearn.model_selection import train_test_split
+###### from sklearn.preprocessing import StandardScaler
+###### from sklearn.metrics import accuracy_score,confusion_matrix
+###### from pandas.plotting import andrews_curves
+
 Import pandas to allow for data analysis, manipulation. Import numpy to work with numerical data, arrays. Import matplotlib for use in creating static, animated, and interactive visualizations in python, pyplot is imported as a submodule of the matplotlib library and is used to visualize diagrams/visual data/plots. Seaborn is similar to matplotlib but gives a variety of visualization patterns which can be used in the analysis and is useful for plotting visual relationship between data. Importing andews curves is another method which is useful in visualising data. 
 To perform analysis on the data it is necessary to import tools from other libraries such as sklearn, this contains tools that will allow you to train and test the data, classification and regression tools and much more, all which will help in predicting the class/species of the iris flower based on its specific features. 
 To work with the dataset it is necessary to import the data and load it into a dataframe. A dataframe is a 2 dimensional data structure, like a 2 dimensional array, or a table with rows and columns and can be done through pandas. I downloaded the data from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/iris) and saved it to my repository. The data file is CSV file (comma separated files) and can be read in using pd.read_csv() function. 
@@ -61,7 +60,7 @@ Iris-virginica     50
 Name: count, dtype: int64
 ```
 
-To get more detailed information about the dataset in one function, such as the number of rows, columns, names of columns, data type, use can use the info() function, this will allow check if there are any null values. Using df.info with print this will output the below.
+To get more detailed information about the dataset in one function, such as the number of rows, columns, names of columns, data type, use can use the info() function, this will allow check if there are any null values. Using this function will print the belo output.
 
 ```
 <class 'pandas.core.frame.DataFrame'>
@@ -169,3 +168,24 @@ In the case where the value is close to 0, it means that there is little to no r
 To summarize the correlation matrix is extremely useful in displaying how the different variables are related to each other, which can be useful in the next stage for understanding the data, making decisions about testing, modelling, accuracy and predictability.
 
 Next, I will use the train and test function, to train the model and test the dataset, which is a method to measure the accuracy of the model and which can then be used to predict the species based on the features. 
+
+
+
+
+
+### References
+* <https://www.w3schools.com/python/pandas/default.asp>
+* <https://www.datacamp.com/cheat-sheet/pandas-cheat-sheet-for-data-science-in-python>
+* <https://res.cloudinary.com/dyd911kmh/image/upload/v1676302204/Marketing/Blog/Pandas_Cheat_Sheet.pdf>
+* <https://towardsdatascience.com/eda-of-the-iris-dataset-190f6dfd946d>
+* <https://www.analyticsvidhya.com/blog/2021/05/shape-of-data-skewness-and-kurtosis/#:~:text=The%20skewness%20is%20a%20measure,pushed%20towards%20the%20left%20side).>
+* <https://www.codespeedy.com/plotting-violin-plots-in-python-using-the-seaborn-library/>
+* <https://www.geeksforgeeks.org/violin-plot-for-data-analysis/>
+* <https://www.geeksforgeeks.org/make-a-violin-plot-in-python-using-matplotlib/>
+* <https://www.w3schools.com/python/python_ml_percentile.asp>
+* <https://matplotlib.org/stable/tutorials/colors/colormaps.html>
+* <https://www.analyticsvidhya.com/blog/2022/06/iris-flowers-classification-using-machine-learning/>
+* <https://www.w3schools.com/python/python_ml_confusion_matrix.asp#:~:text=What%20is%20a%20confusion%20matrix,the%20predictions%20we%20have%20made.>
+* <https://vitalflux.com/python-creating-scatter-plot-with-iris-dataset/>
+* <https://www.theguardian.com/technology/2019/jul/13/margaret-hamilton-computer-scientist-interview-software-apollo-missions-1969-moon-landing-nasa-women>
+* <https://dillinger.io/>
