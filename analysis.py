@@ -223,18 +223,20 @@ with open('iris_summary.txt', 'w') as f:
 
 
 #Split the Data Into Train and Test Datasets
-#x = df.iloc[:,:-1].values
-#y = df.iloc[:,4].values
-#x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=0)
+#Using iloc to get specific rows/columns from the dataframe needed for the train, test sets 
+x = df.iloc[:,:-1].values
+y = df.iloc[:,4].values
+x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=0)
+#Testing the shape to ensure correct values based on the 75% training, 25% test split on the data
 #print(x_train.shape)
 #print(x_test.shape)
 #print(y_train.shape)
 #print(y_test.shape)
 
 #Create the Model (Classification - logistic regression)
-#model=LogisticRegression()
-#model.fit(x_train,y_train)
-#y_pred=model.predict(x_test)
+model=LogisticRegression()
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
 #print(y_pred)
 #cm=(confusion_matrix(y_test,y_pred))
 #print(cm)
@@ -243,8 +245,9 @@ with open('iris_summary.txt', 'w') as f:
 #plt.title('Confusion Matrix')
 #plt.xlabel('Predicted Labels')
 #plt.ylabel('Actual Labels')
+#plt.savefig('Confusion matrix Iris Dataset.png') 
 #plt.show()
 
 
-#accuracy=accuracy_score(y_test,y_pred)*100
-#print("Accuracy of the model is {:.2f}".format(accuracy),"%.")
+accuracy=accuracy_score(y_test,y_pred)*100
+print("Accuracy of the model is {:.2f}".format(accuracy),"%.")

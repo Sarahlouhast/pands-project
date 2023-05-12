@@ -168,7 +168,54 @@ From this table and the heatmap visual, you can see where two variables are clos
 In the case where the value is close to 0, it means that there is little to no relationship between them, take a look at sepal_length and petal_width have a weak correlation coefficient (0.82), you can take away there may not be a strong relationship between these two variables.
 To summarize the correlation matrix is extremely useful in displaying how the different variables are related to each other, which can be useful in the next stage for understanding the data, making decisions about testing, modelling, accuracy and predictability.
 
-Next, I will use the train and test function, to train the model and test the dataset, which is a method to measure the accuracy of the model and which can then be used to predict the species based on the features. 
+Next, I will use the train and test function, to train the model and test the dataset, which is a method to measure the accuracy of the model and which can then be used to predict the species based on the features. Firstly, I will need to split the data into train and test sets, I train the model using the training set, I test the model using the testing set. Train the model means create the model. Test the model means test the accuracy of the model. The default value for the train_test_split splits the data into 75% training data and 25% test data.  To get the value of the train and test data you can use the shape method. I will create a variable to store the train, test data. Using the iloc to select the specific rows/columns from the dataframe.
+Once this step is complete it helps in working towards predicting the species based on the features and the accuracy of this. To do so I will classify the species using logistic regression and a confusion matrix. Logistic regression has been imported already from the sci-kit learn library. A model of logistic regression variable is created and I will pass the earlier training datasets through this model and then predict the results with the predict method. This will contains species names in the form of an array. To find the accuracy of the model I will use the accuracy method and this will output the below.
+Accuracy of the model is 97.37 %.
+This will tell you how accurately the model built will predict the species values. 
+Using a confusion matrix, will display a matrix with actual values and predicted values.
+Using Logistic Regression, allows you to classify the iris flower samples into their respective species, from this model you can see an accuracy score of 97.37%, which shows that the model built is very accurate in predicting the species. Although it is important to note that this is a sample output, and accuracy may vary depending on the data/splits/sample sizes.
+Another method to use in predicting species is a confusion matrix. Using the data from the train and test split model I can create a confusion matrix, which will give a breakdown of the predictions made by the model. The output of the matrix resulted in the below.
+```
+[[13  0  0]
+ [ 0 15  1]
+ [ 0  0  9]]
+``` 
+The matrix shows the number of true positives, true negatives, false positives, and false negatives. I will display this in a heatmap, where the different represent the intensity or magnitude of the values in the matrix, which will help in visualizing patterns and distributions of predictions.
+The darker or more intense colours will represent higher values indicating accurate predictions , while lighter or less intense will represent lower values, indicating incorrect predictions.
+By using the confusion matrix along with logistic regression both give insights in the classification of the model built
+The below code will executes these functions
+
+```
+#Split the Data Into Train and Test Datasets
+#Using iloc to get specific rows/columns from the dataframe needed for the train, test sets 
+#x = df.iloc[:,:-1].values
+#y = df.iloc[:,4].values
+#x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=0)
+#Testing the shape to ensure correct values based on the 75% training, 25% test split on the data
+#print(x_train.shape)
+#print(x_test.shape)
+#print(y_train.shape)
+#print(y_test.shape)
+
+#Create the Model (Classification - logistic regression)
+#model=LogisticRegression()
+#model.fit(x_train,y_train)
+#y_pred=model.predict(x_test)
+#print(y_pred)
+#cm=(confusion_matrix(y_test,y_pred))
+#print(cm)
+#display confusion matrix
+#sns.heatmap(cm, annot=True, cmap='YlGnBu', fmt='d')
+#plt.title('Confusion Matrix')
+#plt.xlabel('Predicted Labels')
+#plt.ylabel('Actual Labels')
+#plt.show()
+
+
+#accuracy=accuracy_score(y_test,y_pred)*100
+#print("Accuracy of the model is {:.2f}".format(accuracy),"%.")
+```
+Overall it is evident that there is a massive world of data and exploring and endless analysis that can be done. This project is a summary of the iris dataset, the possible options that can be used in investigating the dataset, providing insights into the analysis, the review of the data file itself, options on how to train and test data to allow you to make predictions on the species based on its specific features using various methods such as classifications, logistic regression and confusion matrix. 
 
 
 
