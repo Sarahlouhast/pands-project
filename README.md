@@ -28,7 +28,7 @@ from sklearn.metrics import accuracy_score,confusion_matrix
 from pandas.plotting import andrews_curves
 Import pandas to allow for data analysis, manipulation. Import numpy to work with numerical data, arrays. Import matplotlib for use in creating static, animated, and interactive visualizations in python, pyplot is imported as a submodule of the matplotlib library and is used to visualize diagrams/visual data/plots. Seaborn is similar to matplotlib but gives a variety of visualization patterns which can be used in the analysis and is useful for plotting visual relationship between data. Importing andews curves is another method which is useful in visualising data. 
 To perform analysis on the data it is necessary to import tools from other libraries such as sklearn, this contains tools that will allow you to train and test the data, classification and regression tools and much more, all which will help in predicting the class/species of the iris flower based on its specific features. 
-To work with the dataset it is necessary to import the data and load it into a dataframe. A dataframe is a 2 dimensional data structure, like a 2 dimensional array, or a table with rows and columns and can be done through pandas. I downloaded the data from the [UCI Machine Learning Repositor](https://archive.ics.uci.edu/ml/datasets/iris) and saved it to my repository. The data file is CSV file (comma separated files) and can be read in using pd.read_csv() function. 
+To work with the dataset it is necessary to import the data and load it into a dataframe. A dataframe is a 2 dimensional data structure, like a 2 dimensional array, or a table with rows and columns and can be done through pandas. I downloaded the data from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/iris) and saved it to my repository. The data file is CSV file (comma separated files) and can be read in using pd.read_csv() function. 
 The downloaded file does not contain the necessary column names, these are added using the below and then read into a dataframe to include the column names. 
 ```
 col_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
@@ -36,29 +36,34 @@ df = pd.read_csv('iris.data', delimiter=',', names=col_names)
 ```
 Before performing any analysis, testing or modelling it is necessary to check the data file, ensure it loaded correctly and does not contain any bad data/empty cells/duplicates/incorrect formatting. 
 To do this you can check the first few rows of the dataframe to check if it loaded correctly, using the head() function, note this will default to showing the first 5 rows unless you specify more, if you want to see the last 5 you can use the tail() function. The output of the print(df.head()) will display the below.
+```
    sepal_length  sepal_width  petal_length  petal_width      species
 0           5.1          3.5           1.4          0.2  Iris-setosa
 1           4.9          3.0           1.4          0.2  Iris-setosa
 2           4.7          3.2           1.3          0.2  Iris-setosa
 3           4.6          3.1           1.5          0.2  Iris-setosa
 4           5.0          3.6           1.4          0.2  Iris-setosa
-
+```
 It can be useful to view the shape of the file the shape of the file using the print(df.shape) function which display the following, tell you the number of rows and columns. 
 (150, 5)
 Using the print(df.columns) which give you information on the columns, including column name. This will output the below.
+```
 Index(['sepal_length', 'sepal_width', 'petal_length', 'petal_width',
        'species'],
       dtype='object')
-
+```
 Using count()  the number of cells, using the print(df['species'].value_counts()) will output the below, giving information on the species, the names of calls, the count of each and the data type. 
+```
 species
 Iris-setosa        50
 Iris-versicolor    50
 Iris-virginica     50
 Name: count, dtype: int64
+```
 
 To get more detailed information about the dataset in one function, such as the number of rows, columns, names of columns, data type, use can use the info() function, this will allow check if there are any null values. Using df.info with print this will output the below.
 
+```
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 150 entries, 0 to 149
 Data columns (total 5 columns):
@@ -72,10 +77,11 @@ Data columns (total 5 columns):
 dtypes: float64(4), object(1)
 memory usage: 6.0+ KB
 None 
+```
 
 It is worth noting that while the info() function checks for null values, there is also another function, .isnull(), which can be used on its own for cleaning and detecting missing values, to find missing values i.e NaN, which can occur due to several reasons. If data is missing, it will display True else False.
 To get a more detailed description of the data you can use the describe() function. As the file contains numerical data, this function will display statistics information including the count, mean, standard deviation, minimum/maximum value, % Percentiles (note percentiles are used in statistics to give you a number that describes the value that a given percent of the values are lower than, how many of the values are less than the given percentile). The print(df.describe()) will output the below.
-
+```
        sepal_length  sepal_width  petal_length  petal_width
 count    150.000000   150.000000    150.000000   150.000000
 mean       5.843333     3.054000      3.758667     1.198667
@@ -85,15 +91,18 @@ min        4.300000     2.000000      1.000000     0.100000
 50%        5.800000     3.000000      4.350000     1.300000
 75%        6.400000     3.300000      5.100000     1.800000
 max        7.900000     4.400000      6.900000     2.500000
+```
 
 If you don’t want to use the describe function and want specific information or want to find this on their own you can do so, for example, if you want to find the minimum and maximum from a column, in this case I will use the sepal length. I will create a variable for each min, max and read in the specific column with the function. 
-‘’’
+```
 min_data=df["sepal_length"].min()
 max_data=df["sepal_length"].max()  
 #print("Minimum:",min_data, "\nMaximum:", max_data)
+```
 This will output the below.
 Minimum: 4.3 
 Maximum: 7.9
+
 It can be useful also, if you are more of a visual person to view the count of each variable in a graph. The below code will display this, firstly creating a variable for the species count which contains the count function to count the specific column of species, this will be displayed in a bar plot, with a title and labels added for each axis and the show() function to display this. 
 
 ```
@@ -148,13 +157,14 @@ This will show the relationship between the iris flower features and the species
 Next up I will analyse the dataset in more detail, with a correlation matrix, exploring the correlations between the different variables, analyzing the strength and direction of the relationship between pairs of variables. And I will display this in a heatmap for visualization.
 Each cell in the table will shows the correlation between the two variables. The value in the matrix will range from -1 to 1, where -1 indicates a negative low correlation, 0 indicates no correlation, and 1 indicates a positive high correlation. It is worth noting that I will create a numeric variable of the dataframe for the matrix to take in the numeric data only. The heatmap will be styled using seaborn tools such as colourmap and a copy of this will be saved.
 The output of the matrix table will display the below. 
+```
               sepal_length  sepal_width  petal_length  petal_width
 sepal_length      1.000000    -0.109369      0.871754     0.817954
 sepal_width      -0.109369     1.000000     -0.420516    -0.356544
 petal_length      0.871754    -0.420516      1.000000     0.962757
 petal_width       0.817954    -0.356544      0.962757     1.000000
-From this table and the heatmap visual
-Where two variables are close to +1 with a positive correlation, it shows a good relationship, when one variable increases, the other variable is likely to increase as well, if you look at the example petal_length and petal_width (value 0.96), which means that as the petal length increases, the petal width also tends to increase. 
+```
+From this table and the heatmap visual, you can see where two variables are close to +1 with a positive correlation, it shows a good relationship, when one variable increases, the other variable is likely to increase as well, if you look at the example petal_length and petal_width (value 0.96), which means that as the petal length increases, the petal width also tends to increase. 
 In the case where the value is close to 0, it means that there is little to no relationship between them, take a look at sepal_length and petal_width have a weak correlation coefficient (0.82), you can take away there may not be a strong relationship between these two variables.
 To summarize the correlation matrix is extremely useful in displaying how the different variables are related to each other, which can be useful in the next stage for understanding the data, making decisions about testing, modelling, accuracy and predictability.
 
