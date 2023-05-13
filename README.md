@@ -157,7 +157,7 @@ Next I will create a scatter plot of variables for petals, sepals to show the re
 
 Following this I will create a pairplot using the seaborn and the matplotlib module, this is extremely useful in visualising the 3 species in pairs, how they pair up together, representing the positive and negative correlation between the variables, all at once, in a quick view shot, instead of doing this individually. I found this much more beneficial than the scatterplot, mainly because it displays a full matrix of the relationships between each variable. For this plot the species will be the variable to map into the differentiating colours. Each of these species is compared with each of the other variables in the dataset. Like the scatterplot result, one clear observation which can be taken from the pairplot is that the Iris-Setosa (in blue) is separated from both other species in all the features, while separating versicolor from virginica is much harder as they have some overlap. 
 
-Another usual tool for visualization is a violin plot, this will be a plot of all the input variables (the features) against the output variable which is the species. The violin plot will show density of the length and width of the species. The thinner part highlights that there is less density whereas the wider part conveys higher density, a take-away can be that the Iris-Setosa class has a smaller petal length and petal width compared to the other classes. These can be viewed from the png files saved tot he repository.
+Another usual tool for visualization is a violin plot, this will be a plot of all the input variables (the features) against the output variable which is the species. The violin plot will show density of the length and width of the species. The thinner part highlights that there is less density whereas the wider part conveys higher density, a take-away can be that the Iris-Setosa class has a smaller petal length and petal width compared to the other classes. These can be viewed from the png files saved to the repository.
 
 Staying with the visualisation tools another technique from the pandas library is called Andrews Curves.
 This will show the relationship between the iris flower features and the species, plotting the curves for each iris flower grouped by species. Where the curves are distinct and separate from the other curves, you can see in the case of the Iris-setosa species this has different feature values compared to Iris-versicolor and Iris-virginica. Whereas where the curves overlap, you can see that the feature values are similar across the species at these stages.
@@ -178,21 +178,21 @@ To summarize the correlation matrix is extremely useful in displaying how the di
 
 In the final stage, I will look at testing, modelling, accuracy and predictability of the species. I will start with the train and test function to train the model and test the dataset. This is a method to measure the accuracy of the model, which can then be used to predict the species based on the features. 
 Firstly, I will need to split the data into train and test sets, I train the model using the training set, I test the model using the testing set. Train the model means create the model. Test the model means test the accuracy of the model. The default value for the train_test_split splits the data into 75% training data and 25% test data.  To get the value of the train and test data you can use the shape method. I will create a variable to store the train, test data. Using the iloc to select the specific rows/columns from the dataframe.
-Once this step is complete it helps in working towards predicting the species based on the features and the accuracy of this. To do so I will classify the species using logistic regression and a confusion matrix. Logistic regression has been imported already from the sci-kit learn library. A model of logistic regression variable is created and I will pass the earlier training datasets through this model and then predict the results with the predict method. This will contains species names in the form of an array. To find the accuracy of the model I will use the accuracy method and this will output the below.
+Once this step is complete it helps in working towards predicting the species based on the features and the accuracy of this. To do so I will classify the species using logistic regression and a confusion matrix. Logistic regression has been imported already from the sklearn library. A model of logistic regression variable is created and I will pass the earlier training datasets through this model and then predict the results with the predict method. This will contain the species names in the form of an array. To find the accuracy of the model I will use the accuracy method and this will output the below.
 ```
 Accuracy of the model is 97.37 %.
 ```
 This will tell you how accurately the model built will predict the species values. 
 Using Logistic Regression, allows you to classify the iris flower samples into their respective species, from this model you can see an accuracy score of 97.37%, which shows that the model built is very accurate in predicting the species. Although it is important to note that this is a sample output, and accuracy may vary depending on the data/splits/sample sizes.
 
-Another method to use in predicting species is a confusion matrix. 
-The confusion matrix will display a matrix with actual values and predicted values based on the data from the train and test split model. This will give a breakdown of the predictions made by the model. The output of the matrix resulted in the below.
+In this case it is good to have another method to use in predicting species, here I will use a confusion matrix for this. 
+The confusion matrix will display a matrix with actual values and predicted values based on the data from the train and test split model created earlier. This will give a breakdown of the predictions made by the model. The output of the matrix resulted in the below.
 ```
 [[13  0  0]
  [ 0 15  1]
  [ 0  0  9]]
 ``` 
-The matrix shows the number of true positives, true negatives, false positives, and false negatives. I will display this in a heatmap, where the different colours represent the intensity or magnitude of the values in the matrix, which will help in visualizing patterns and distributions of predictions.
+The matrix shows the number of true positives, true negatives, false positives, and false negatives. I will display this in a heatmap, where the different colours represent the intensity or magnitude of the values in the matrix, which will help in visualizing patterns and distributions of the predictions.
 The darker or more intense colours will represent higher values indicating accurate predictions, while lighter or less intense will represent lower values, indicating incorrect predictions.
 By using the confusion matrix along with logistic regression both give insights into the classification of the model built and provide accuracy on the predictions made. 
 
@@ -223,11 +223,7 @@ accuracy=accuracy_score(y_test,y_pred)*100
 print("Accuracy of the model is {:.2f}".format(accuracy),"%.")
 ```
 ## Conclusion 
-Overall it is evident that there is a massive world of data and exploring and endless analysis that can be done. This project is a summary of the iris dataset, a background to it, the possible options that can be used in investigating the dataset, providing insights into the analysis, the review of the data file itself, options on how to train and test data to allow you to make predictions on the species based on its specific features using various methods such as classifications, logistic regression and confusion matrix. 
-
-
-
-
+Overall it is evident that there is a massive world of data and exploring out there. There is endless analysis that can be done. This project is a summary of the iris dataset, a background to it, the possible options that can be used in investigating the dataset, providing insights into the analysis, the review of the data file itself, options on how to train and test data to allow you to make predictions on the species based on its specific features using various methods such as classifications, logistic regression and confusion matrix. 
 
 ## References
 * <https://www.w3schools.com/python/pandas/default.asp>
